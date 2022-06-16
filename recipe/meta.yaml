@@ -1,5 +1,5 @@
 {% set name = "prance" %}
-{% set version = "0.19.0" %}
+{% set version = "0.21.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prance-{{ version }}.tar.gz
-  sha256: 86ec64378036471efdd9681648d8da6b39e5143ea2e6981b7863a33fbc75d739
+  sha256: ce06feef8814c3436645f3b094e91067b1a111bc860a51f239f93437a8d4b00e
 
 build:
   entry_points:
@@ -22,13 +22,12 @@ requirements:
     - pytest-runner
     - python >=3.6
   run:
-    - chardet >=3.0,<4
+    - chardet >=3.0,<5.0
     - python >=3.6
-    - pyyaml >=5.3,<6
-    - requests >=2.22,<3
-    - semver >=2.9,<3
-    - six >=1.14,<2
-    - click
+    - ruamel.yaml ~=0.17.10
+    - requests ~=2.25
+    - semver ~=2.13
+    - six ~=1.15
 
 test:
   imports:
