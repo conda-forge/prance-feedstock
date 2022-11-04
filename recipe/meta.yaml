@@ -1,5 +1,5 @@
 {% set name = "prance" %}
-{% set version = "0.21.8.0" %}
+{% set version = "0.22.11.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prance-{{ version }}.tar.gz
-  sha256: ce06feef8814c3436645f3b094e91067b1a111bc860a51f239f93437a8d4b00e
+  sha256: 814a523bc1ff18383c12cb523ce44c90fe8792bf5f48d8cc33c9f658276658ed
 
 build:
   entry_points:
