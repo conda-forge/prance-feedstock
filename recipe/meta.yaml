@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prance-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prance-{{ version }}.tar.gz
   sha256: d8c15f8ac34019751cc4945f866d8d964d7888016d10de3592e339567177cabe
 
 build:
@@ -14,17 +14,17 @@ build:
     - prance=prance.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - pytest-runner
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - packaging >=21.3
     - chardet >=3.0
-    - python >=3.6
+    - python >={{ python_min }}
     - ruamel.yaml >=0.17.10
     - requests >=2.25
     - semver >=2.13,<3.dev0
@@ -40,6 +40,7 @@ test:
     - pip
     # optional dependency needed only for `prance --help`
     - flex-swagger
+    - python {{ python_min }}
 
 about:
   home: https://github.com/jfinkhaeuser/prance
