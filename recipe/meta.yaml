@@ -41,6 +41,7 @@ test:
   commands:
     - pip check
     - prance --help
+    - pip list | grep {{ name }} | tr -s " " | grep {{ version }}
   requires:
     - pip
     # optional dependency needed only for `prance --help`
