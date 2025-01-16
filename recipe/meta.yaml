@@ -14,13 +14,18 @@ build:
     - prance=prance.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
 
 requirements:
   host:
     - pip
     - pytest-runner
     - python {{ python_min }}
+    - setuptools >60
+    - wheel
+    - setuptools_scm >6
+    # from setuptools_scm[toml]
+    - tomli
   run:
     - packaging >=21.3
     - chardet >=3.0
@@ -36,6 +41,7 @@ test:
   commands:
     - pip check
     - prance --help
+    - pip list | grep {{ name }} | tr -s " " | grep {{ version }}
   requires:
     - pip
     # optional dependency needed only for `prance --help`
@@ -51,3 +57,4 @@ about:
 extra:
   recipe-maintainers:
     - xhochy
+    - thewchan
