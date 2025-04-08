@@ -1,5 +1,6 @@
 {% set name = "prance" %}
 {% set version = "25.4.8.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -19,21 +20,18 @@ build:
 requirements:
   host:
     - pip
-    - pytest-runner
     - python {{ python_min }}
-    - setuptools >60
+    - setuptools >65
     - wheel
-    - setuptools_scm >6
+    - setuptools_scm >8
     # from setuptools_scm[toml]
     - tomli
   run:
-    - packaging >=24.2
-    - chardet >=5.2
     - python >={{ python_min }}
+    - chardet >=5.2
     - ruamel.yaml >=0.18.10
     - requests >=2.32.3
-    - semver >=2.13,<3.dev0
-    - six >=1.15,<2.dev0
+    - packaging >=24.2
 
 test:
   imports:
