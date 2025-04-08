@@ -1,5 +1,6 @@
 {% set name = "prance" %}
-{% set version = "23.6.21.0" %}
+{% set version = "25.4.8.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,33 +8,30 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prance-{{ version }}.tar.gz
-  sha256: d8c15f8ac34019751cc4945f866d8d964d7888016d10de3592e339567177cabe
+  sha256: 2f72d2983d0474b6f53fd604eb21690c1ebdb00d79a6331b7ec95fb4f25a1f65
 
 build:
   entry_points:
     - prance=prance.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 0
 
 requirements:
   host:
     - pip
-    - pytest-runner
     - python {{ python_min }}
-    - setuptools >60
+    - setuptools >65
     - wheel
-    - setuptools_scm >6
+    - setuptools_scm >8
     # from setuptools_scm[toml]
     - tomli
   run:
-    - packaging >=21.3
-    - chardet >=3.0
     - python >={{ python_min }}
-    - ruamel.yaml >=0.17.10
-    - requests >=2.25
-    - semver >=2.13,<3.dev0
-    - six >=1.15,<2.dev0
+    - chardet >=5.2
+    - ruamel.yaml >=0.18.10
+    - requests >=2.32.3
+    - packaging >=24.2
 
 test:
   imports:
